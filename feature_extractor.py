@@ -35,7 +35,7 @@ def group_data(data, degree=3, cutoff = 1, hash=hash):
     return np.array(new_data).T
 
 if __name__ == "__main__": 
-	# load labeled data
+	# load data
 	df_train = pd.read_csv('train.csv')
 	df_test = pd.read_csv('test.csv')
 
@@ -51,21 +51,17 @@ if __name__ == "__main__":
 	dt1 = group_data(all_data, degree=3, cutoff=0)
 
 	# get frequencies
-	for col in  df.columns.values:
-		df['f_'+col] = df.groupby(col)[col].transform('count')
+	#for col in  df.columns.values:
+	#	df['f_'+col] = df.groupby(col)[col].transform('count')
 
 	X_new = np.hstack((dp1, dt1))
 	num_new_features = X_new.shape[1]
-
 	for i in range(num_new_features):
 		col = str(i)
 		df[col] = X_new[:,i]
-		df['f_'+col] = df.groupby(col)[col].transform('count')
 
 	df_train = df.drop(df.index[range(num_train, num_train+num_test)])
 	df_test = df.drop(df.index[range(num_train)])
 
-	df_train.to_csv('train_all.csv', index=False)
-	df_test.to_csv('test_all.csv', index=False)
-
-	
+	df_train.to_csv('train_new_features.csv', index=False)
+	df_test.to_csv('test_new_features.csv', index=False)
