@@ -19,7 +19,7 @@ def group_data(data, degree=3, cutoff = 1, hash=hash):
     new_data = []
     m,n = data.shape
     for indexes in combinations(range(n), degree):
-        new_data.append([hash(tuple(v))% (2**32) for v in data[:,indexes]])
+        new_data.append([hash(tuple(v))% (2**24) for v in data[:,indexes]])
     for z in range(len(new_data)):
         counts = dict()
         useful = dict()
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 	
 	# combined features
 	all_data = pd.DataFrame.as_matrix(df)
-	all_data = all_data[:,1:-1]
+	all_data = all_data[:,1:]
 	dp1 = group_data(all_data, degree=2, cutoff=0) 
 	dt1 = group_data(all_data, degree=3, cutoff=0)
 
@@ -58,24 +58,24 @@ if __name__ == "__main__":
 		df[col] = X_new[:,i]
 
 	# get frequencies
-	for col in  df.columns.values:
-		df['f_'+col] = df.groupby(col)[col].transform('count')
+	#for col in  df.columns.values:
+		#df['f_'+col] = df.groupby(col)[col].transform('count')
 	del all_data, dp1, dt1
 
 	# one hot encoding	
-	enc = OneHotEncoder(categorical_features=range(93))
-	enc.fit(df.ix[:,1:-1])
+	enc = OneHotEncoder(categorical_features=range(num_new_features + 9))
+	enc.fit(df.ix[:,1:])
 
 	df_train = df.drop(df.index[range(num_train, num_train+num_test)])
 	df_test = df.drop(df.index[range(num_train)])
 	del df
-	y = df_train.ix[:,0];X = df_train.ix[:,1:-1]
-	y_test = df_test.ix[:,0]; X_test = df_test.ix[:,1:-1]
+	y = df_train.ix[:,0];X = df_train.ix[:,1:]
+	y_test = df_test.ix[:,0]; X_test = df_test.ix[:,1:]
 	X = enc.transform(X)
 	X_test = enc.transform(X_test)
 	
 	# CV and training
-	classifier = LogisticRegressionCV(Cs = np.logspace(-2, 2, 4, base=2), penalty='l1', scoring = 'roc_auc', solver = 'liblinear')
+	classifier = LogisticRegressionCV(Cs = np.logspace(-4, 4, 10, base=2), penalty='l1', scoring = 'roc_auc', solver = 'liblinear')
 	classifier.fit(X, y)
 	
 	# testing
