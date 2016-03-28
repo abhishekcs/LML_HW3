@@ -61,7 +61,6 @@ if __name__ == "__main__":
 		col = str(i)
 		df[col] = X_new[:,i]
 		df['f_'+col] = df.groupby(col)[col].transform('count')
-		df.drop(col, axis=1, inplace=True)
 
 	df_train = df.drop(df.index[range(num_train, num_train+num_test)])
 	df_test = df.drop(df.index[range(num_train)])
