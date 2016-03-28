@@ -10,4 +10,4 @@ Progress:
 * Logistic without one-hot : 51.924
 * XGB without one-hot : 87.25
 * XGB with hot : 88.48
-* L1-Logistic with one-hot & new features : 89.613
+* L1-Logistic with one-hot & new features : 89.613 (code in hw3p1.py, predictions in hw3p1.csv)
