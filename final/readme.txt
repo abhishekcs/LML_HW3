@@ -1,9 +1,12 @@
 List of files:
 hw3p1.py -- l1 regularized logsitic regression. All pairs and triples of the original categorical features were generated. Uses one-hot encoding
 hw3p2.py -- XGBoost. All pairs and triples of the original categorical features and their frequencies were used to train the model. Doesn't use one-hot encoding
+hw3p3_randomForest.py -- Random Forest. Trained on original features. Uses criterion as Entropy instead of the default Gini. Doesn't use one hot encoding.
 
 hw3p1.csv -- Predictions on test dataset of model trained in hw3p1.py.
 hw3p2.csv -- Predictions on test dataset of model trained in hw3p2.py.
+hw3p3.csv -- Predictions on test dataset of best ensemble model.
 
 pic1.png
 pic2.png
+best.png -- Screen Shot of best Kaggle Submission
