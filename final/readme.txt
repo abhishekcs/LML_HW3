@@ -24,11 +24,6 @@ The filenames match the python file names above
 
 
 
-
-<<<<<<< HEAD
-Scrrenshot
+Screenshot
 --------------------------------
 best.png -- Screen Shot of best Kaggle Submission
-=======
-best.png, best_2.png -- Screen Shot of best Kaggle Submission
->>>>>>> 1b29883a990310b49bf8c8fcddfb716648252192
