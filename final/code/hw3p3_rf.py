@@ -112,6 +112,7 @@ if __name__ == "__main__":
       
 
     ## fit training data with best hyperparemters
+    ## For Gini, we simply replace the criterion with Gini
     other_parameter_values = {'n_estimators': 270, 'max_features': 4, 
                               'max_depth': 23, 'min_samples_leaf': 2,
                               'min_samples_split':8, 'criterion':'entropy'}
