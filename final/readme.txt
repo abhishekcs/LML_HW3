@@ -7,6 +7,4 @@ hw3p1.csv -- Predictions on test dataset of model trained in hw3p1.py.
 hw3p2.csv -- Predictions on test dataset of model trained in hw3p2.py.
 hw3p3.csv -- Predictions on test dataset of best ensemble model.
 
-pic1.png
-pic2.png
-best.png -- Screen Shot of best Kaggle Submission
+best.png, best_2.png -- Screen Shot of best Kaggle Submission
