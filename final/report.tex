@@ -32,6 +32,10 @@ All pairs and triples of the original categorical features and their frequencies
 
 \section{Q2: XGBoost with one-hot encoding}
 \section{Q3}
-\textit{Random Forests..}\\
-\textit{Ensemble..}
+\begin{itemize}
+\item Model:  ensemble of $\ell$1 regularized logsitic regression, XGBoost with one-hot encoding, XGBoost without one-hot encoding and random forests trained with 'entropy' criterion.
+\item Private Score: 0.9079
+\end{itemize}
+\textbf{Best parameters for Random Forest}\\
+The Random Forest was trained on the original features. One hot-encoding was not used for categorical features. The best parameters obtained using 5-fold cross validation were-- $n\_estimators= 270, max\_features=4, max\_depth=23, min\_samples\_leaf=2,min\_samples\_split=8, criterion=entropy$. The private score only with Random Forest was 0.8762.
 \end{document}
