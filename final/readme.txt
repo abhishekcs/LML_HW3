@@ -22,6 +22,8 @@ Prediction in ./predictions/
 --------------------------------
 The filenames match the python file names above
 
+hw3p3.scv contains the final ensemble predictions
+
 
 
 Screenshot
